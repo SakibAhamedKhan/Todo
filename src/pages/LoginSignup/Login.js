@@ -4,6 +4,7 @@ import auth from '../../firebase.init';
 import Loadings from '../Shared/Loadings';
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
+import Swal from 'sweetalert2';
 
 
 const Login = () => {
@@ -24,7 +25,11 @@ const Login = () => {
     }
 
     if(error){
-        console.log(error);
+        Swal.fire(
+            'Ops!',
+            `${error.message}`,
+            'error'
+          )
     }
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -54,9 +59,6 @@ const Login = () => {
                                     <span class="label-text">Password</span>
                                 </label>
                                 <input type="password" name='password' placeholder="password" class="input input-bordered" required />
-                                <label class="label">
-                                    <a href="#" class="label-text-alt link link-hover">Forgot password?</a>
-                                </label>
                             </div>
                             <div class="form-control mt-6">
                                 <button type='submit' class="btn btn-primary">Login</button>

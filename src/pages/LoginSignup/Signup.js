@@ -5,6 +5,7 @@ import auth from '../../firebase.init';
 import Loadings from '../Shared/Loadings';
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
+import Swal from 'sweetalert2';
 
 const Signup = () => {
     const navigate = useNavigate();
@@ -26,8 +27,11 @@ const Signup = () => {
 
 
     if (error1 || error2) {
-        console.log(error1);
-        console.log(error2);
+        Swal.fire(
+            'Ops!',
+            `${error1.message} ${error2.message}`,
+            'error'
+          )
     }
     const handleSubmit = async(e) => {
         e.preventDefault();
