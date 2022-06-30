@@ -2,8 +2,12 @@ import React from 'react';
 import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
 import Loadings from '../Shared/Loadings';
+import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
+
 
 const Login = () => {
+    const navigate = useNavigate();
     const [
         signInWithEmailAndPassword,
         user,
@@ -15,8 +19,12 @@ const Login = () => {
         return <Loadings></Loadings>
     }   
 
+    if(user){
+        navigate('/dashboard');
+    }
+
     if(error){
-    console.log(error);
+        console.log(error);
     }
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -53,6 +61,7 @@ const Login = () => {
                             <div class="form-control mt-6">
                                 <button type='submit' class="btn btn-primary">Login</button>
                             </div>
+                            <p className='text-center my-1'>Don't have Account? <Link className='text-blue-500 underline' to='/signup'>Signup</Link></p>
                         </form>
                     </div>
                 </div>

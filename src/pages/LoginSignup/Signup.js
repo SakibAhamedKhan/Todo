@@ -4,7 +4,7 @@ import { useCreateUserWithEmailAndPassword, useUpdateProfile } from 'react-fireb
 import auth from '../../firebase.init';
 import Loadings from '../Shared/Loadings';
 import { useNavigate } from "react-router-dom";
-
+import { Link } from "react-router-dom";
 
 const Signup = () => {
     const navigate = useNavigate();
@@ -21,7 +21,7 @@ const Signup = () => {
     }
 
     if(user){
-        navigate('/');
+        navigate('/dashboard');
     }
 
 
@@ -65,6 +65,7 @@ const Signup = () => {
                             <div class="form-control mt-6">
                                 <button type='submit' class="btn btn-primary">Signup</button>
                             </div>
+                            <p className='text-center my-1'>If you have a already account? <Link className='text-blue-500 underline' to='/'>Login</Link></p>
                         </form>
                     </div>
                 </div>
