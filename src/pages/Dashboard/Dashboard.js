@@ -23,7 +23,7 @@ const Dashboard = () => {
 			complete: false
 		}
         console.log(doc);
-            fetch('http://localhost:5000/addTask', {
+            fetch('https://rocky-scrubland-06202.herokuapp.com/addTask', {
                 method: 'POST',
                 headers: {
                     'content-type': 'application/json'

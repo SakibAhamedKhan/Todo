@@ -11,7 +11,7 @@ const Tasks = ({ refresh, setRefresh }) => {
     const [showData, setShowData] = useState({});
 
     useEffect(() => {
-        fetch(`http://localhost:5000/task/${user?.email}`)
+        fetch(`https://rocky-scrubland-06202.herokuapp.com/task/${user?.email}`)
             .then(res => res.json())
             .then(data => setTask(data));
     }, [refresh2, refresh]);
@@ -25,7 +25,7 @@ const Tasks = ({ refresh, setRefresh }) => {
     reverseTask = tasks.reverse();
 
     const handleComplete = (id) => {
-        fetch(`http://localhost:5000/task/${user?.email}`, {
+        fetch(`https://rocky-scrubland-06202.herokuapp.com/task/${user?.email}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'
@@ -41,7 +41,7 @@ const Tasks = ({ refresh, setRefresh }) => {
             })
     }
     const handleDelete = (id) => {
-        fetch(`http://localhost:5000/task/${user?.email}`, {
+        fetch(`https://rocky-scrubland-06202.herokuapp.com/task/${user?.email}`, {
             method: 'DELETE',
             headers: {
                 'content-type': 'application/json'
@@ -84,8 +84,8 @@ const Tasks = ({ refresh, setRefresh }) => {
 
             {/* modal */}
             <input type="checkbox" checked={open} id="my-modal-6" className="modal-toggle" />
-            <div className="modal modal-bottom sm:modal-middle">
-                <div className="modal-box">
+            <div className="modal ">
+                <div className="modal-box w-11/12 max-w-5xl">
                     <label onClick={() => setOpen(false)} class="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
                     <div className='p-3'>
                         <h2 className='text-2xl font-semibold my-2'>Task Name: {showData.taskName}</h2>
